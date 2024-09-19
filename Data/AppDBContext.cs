@@ -1,14 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext : DbContext
+public class AppDBContext : DbContext
 {
-    private readonly string _configurationString = "Host=localhost;Port=5432;Database=test;Username=daniel;Password=1234;";
-
     public DbSet<User> Users { get; set; } // User table
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
     {
-        optionsBuilder.UseNpgsql(_configurationString); // PostgreSQL connection
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
