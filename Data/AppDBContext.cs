@@ -22,5 +22,9 @@ public class AppDBContext : DbContext
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Nickname)
             .IsUnique(); // nickname unique constraint
+        
+        modelBuilder.Entity<User>()
+            .Property(u => u.CreatedAt)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP"); // set time based on current time
     }
 }

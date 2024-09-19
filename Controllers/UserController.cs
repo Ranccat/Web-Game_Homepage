@@ -11,10 +11,19 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<List<User>>> GetAllUsers()
+    // Registeration
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateUser([FromBody] User user)
     {
-        var users = await _userService.GetAllUsersAsync();
-        return Ok(users);
+        var result = await _userService.CreateUserAsync(user);
+        if (!result.IsSuccess)
+        {
+            return BadRequest(result.ErrorMessage);
+        }
+
+        return Ok(user);
     }
+
+    // Login
+    // TODO
 }
