@@ -12,6 +12,9 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Services
 builder.Services.AddScoped<UserService>();
+// HTTP
+builder.Services.AddScoped(sp =>
+    new HttpClient { BaseAddress = new Uri("https://localhost:5274") });
 
 var app = builder.Build();
 

@@ -43,9 +43,5 @@ public class UserService
         return (true, string.Empty);
     }
 
-    // READ
-    public async Task<List<User>> GetAllUsersAsync()
-    {
-        return await _context.Users.ToListAsync();
-    }
+    // READ?
 }

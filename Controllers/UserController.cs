@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-[Route("api/[controller]")]
+[Route("api/user/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
@@ -12,7 +12,7 @@ public class UserController : ControllerBase
     }
 
     // Registeration
-    [HttpPost("create")]
+    [HttpPost("register")]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
         var result = await _userService.CreateUserAsync(user);
