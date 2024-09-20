@@ -9,62 +9,66 @@ public class UserService
         _context = context;
     }
 
-    // CREATE
-    public async Task<(bool IsSuccess, string ErrorMessage)> CreateUserAsync(UserDto userDto)
+    public async Task<(bool IsSuccess, string ErrorMessage)> RegisterAsync(RegisterDto registerDto)
     {
         // check for duplicated user_id
-        bool isUserIdTaken = await _context.Users.AnyAsync(u => u.UserId == userDto.UserId);
+        bool isUserIdTaken = await _context.Users.AnyAsync(u => u.UserId == registerDto.UserId);
         if (isUserIdTaken)
         {
             return (false, "The ID is already taken.");
         }
 
         // check for duplicated nickname
-        bool isNicknameTaken = await _context.Users.AnyAsync(u => u.Nickname == userDto.Nickname);
+        bool isNicknameTaken = await _context.Users.AnyAsync(u => u.Nickname == registerDto.Nickname);
         if (isNicknameTaken)
         {
             return (false, "The nickname is already taken.");
         }
 
         // check for duplicated email
-        bool isEmailTaken = await _context.Users.AnyAsync(u => u.Email == userDto.Email);
+        bool isEmailTaken = await _context.Users.AnyAsync(u => u.Email == registerDto.Email);
         if (isEmailTaken)
         {
             return (false, "The email is already in use.");
         }
 
+        // create entity
+        DateTime currentDateTime = DateTime.UtcNow;
         var user = new User
         {
-            UserId = userDto.UserId,
-            Password = userDto.Password,
-            Email = userDto.Email,
-            Nickname = userDto.Nickname,
-            Bio = userDto.Bio,
-            LastLogin = DateTime.UtcNow,
-            CreatedAt = DateTime.UtcNow
+            UserId = registerDto.UserId,
+            Password = registerDto.Password,
+            Email = registerDto.Email,
+            Nickname = registerDto.Nickname,
+            Bio = null,
+            LastLogin = currentDateTime,
+            CreatedAt = currentDateTime
         };
 
         // hash password
         user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
         // if no duplicates found
-        Console.WriteLine("New user registed");
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
         return (true, string.Empty);
     }
 
-    public async Task<(bool IsSuccess, string ErrorMessage)> LoginAsync(UserDto userDto)
+    public async Task<(bool IsSuccess, string ErrorMessage)> LoginAsync(LoginDto loginDto)
     {
-        var userExist = await _context.Users.AnyAsync(u => u.UserId == userDto.UserId);
-        if (userExist == false)
+        var userInfo = await _context.Users.FirstOrDefaultAsync(u => u.UserId == loginDto.UserId);
+        if (userInfo == null)
         {
-            return (false, "User ID doesn't exists");
+            return (false, "The user ID doesn't exists");
         }
 
-        Console.WriteLine("Login Successfull");
-        Console.WriteLine($"{userDto.UserId}");
+        bool passwordVerified = BCrypt.Net.BCrypt.Verify(loginDto.Password, userInfo.Password);
+        if (passwordVerified == false)
+        {
+            return (false, "Incorrect password");
+        }
+
         return (true, string.Empty);
     }
 }

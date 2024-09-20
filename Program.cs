@@ -3,19 +3,21 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 // Interactive Server
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+    
 // DB Context
 builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Services
 builder.Services.AddScoped<UserService>();
 
-builder.Logging.ClearProviders(); // 기본 로거를 지우고
-builder.Logging.AddConsole(); // 콘솔 로깅 추가
-builder.Logging.AddDebug(); // 디버그 로깅 추가
+// Loggers
+builder.Logging.ClearProviders(); // clear deafult logger
+builder.Logging.AddConsole(); // add console
+builder.Logging.AddDebug(); // add debug
 
 var app = builder.Build();
 

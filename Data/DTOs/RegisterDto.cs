@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public class UserDto
+public class RegisterDto
 {
     [Required(ErrorMessage = "User ID is required.")]
     public string UserId { get; set; } = string.Empty;
@@ -10,5 +10,4 @@ public class UserDto
     public string Email { get; set; } = string.Empty;
     [Required(ErrorMessage = "Nickname is required.")]
     public string Nickname { get; set; } = string.Empty;
-    public string? Bio { get; set; } = null;
 }

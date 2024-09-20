@@ -1,0 +1,43 @@
+@page "/login"
+@rendermode InteractiveServer
+@inject UserService userService
+@inject ILogger<Login> logger
+
+<PageTitle>Login</PageTitle>
+
+<EditForm Model="loginUser" OnValidSubmit="HandleSubmit">
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3"> <!-- UserID -->
+        <label for="inputUserId" class="form-label">User ID</label>
+        <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" />
+        <ValidationMessage For="@(() => loginUser.UserId)" />
+    </div>
+    <div class="mb-3"> <!-- Password -->
+        <label for="inputPassword" class="form-label">Password</label>
+        <InputText type="password" class="form-control" id="inputPassword" @bind-Value="loginUser.Password" />
+        <ValidationMessage For="@(() => loginUser.Password)" />
+    </div>
+  
+    <button class="btn btn-primary" type="submit">Login</button>
+
+</EditForm>
+
+@code {
+    private LoginDto loginUser = new LoginDto();
+
+    private async Task HandleSubmit()
+    {
+        var result = await userService.LoginAsync(loginUser);
+        if (result.IsSuccess)
+        {
+            logger.LogInformation("Login Success");
+        }
+        else
+        {
+            logger.LogInformation(result.ErrorMessage);
+        }
+    }
+}
