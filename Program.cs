@@ -12,9 +12,10 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Services
 builder.Services.AddScoped<UserService>();
-// HTTP
-builder.Services.AddScoped(sp =>
-    new HttpClient { BaseAddress = new Uri("https://localhost:5274") });
+
+builder.Logging.ClearProviders(); // 기본 로거를 지우고
+builder.Logging.AddConsole(); // 콘솔 로깅 추가
+builder.Logging.AddDebug(); // 디버그 로깅 추가
 
 var app = builder.Build();
 
@@ -27,7 +28,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 app.UseAntiforgery();
 
