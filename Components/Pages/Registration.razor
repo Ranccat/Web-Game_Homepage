@@ -1,51 +1,61 @@
 @page "/register"
 @rendermode InteractiveServer
+
 @inject UserService userService
 @inject ILogger<Registration> logger
+@inject AuthStateProvider authState
+@inject NavigationManager navigation
 
 <PageTitle>Registration</PageTitle>
 
 <EditForm Model="newUser" OnValidSubmit="HandleSubmit">
 
-  <DataAnnotationsValidator />
-  <ValidationSummary />
-  <div class="mb-3"> <!-- UserID -->
-    <label for="inputUserId" class="form-label">User ID</label>
-    <InputText class="form-control" id="inputUserId" @bind-Value="newUser.UserId" />
-    <ValidationMessage For="@(() => newUser.UserId)" />
-  </div>
-  <div class="mb-3"> <!-- Password -->
-    <label for="inputPassword" class="form-label">Password</label>
-    <InputText type="password" class="form-control" id="inputPassword" @bind-Value="newUser.Password" />
-    <ValidationMessage For="@(() => newUser.Password)" />
-  </div>
-  <div class="mb-3"> <!-- Email -->
-    <label for="inputEmail" class="form-label">Email Address</label>
-    <InputText type="email" class="form-control" id="inputEmail" @bind-Value="newUser.Email" />
-    <ValidationMessage For="@(() => newUser.Email)" />
-  </div>
-  <div class="mb-3"> <!-- Nickname -->
-    <label for="inputNickname" class="form-label">Nickname</label>
-    <InputText class="form-control" id="inputNickname" @bind-Value="newUser.Nickname" />
-    <ValidationMessage For="@(() => newUser.Nickname)" />
-  </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+
+	<div class="mb-3"> <!-- UserID -->
+		<label for="inputUserId" class="form-label">User ID</label>
+		<InputText class="form-control" id="inputUserId" @bind-Value="newUser.UserId" />
+		<ValidationMessage For="@(() => newUser.UserId)" />
+	</div>
+		
+	<div class="mb-3"> <!-- Password -->
+		<label for="inputPassword" class="form-label">Password</label>
+		<InputText type="password" class="form-control" id="inputPassword" @bind-Value="newUser.Password" />
+		<ValidationMessage For="@(() => newUser.Password)" />
+	</div>
+
+	<div class="mb-3"> <!-- Email -->
+		<label for="inputEmail" class="form-label">Email Address</label>
+		<InputText type="email" class="form-control" id="inputEmail" @bind-Value="newUser.Email" />
+		<ValidationMessage For="@(() => newUser.Email)" />
+	</div>
+
+	<div class="mb-3"> <!-- Nickname -->
+		<label for="inputNickname" class="form-label">Nickname</label>
+		<InputText class="form-control" id="inputNickname" @bind-Value="newUser.Nickname" />
+		<ValidationMessage For="@(() => newUser.Nickname)" />
+	</div>
+
+	<button class="btn btn-primary" type="submit">Submit</button>
 
 </EditForm>
 
 @code {
-  private RegisterDto newUser = new RegisterDto();
+	private RegisterDto newUser = new RegisterDto();
 
-  private async Task HandleSubmit()
-  {
-    var result = await userService.RegisterAsync(newUser);
-    if (result.IsSuccess)
-    {
-      logger.LogInformation("Registeration Success");
-    }
-    else
-    {
-      logger.LogInformation(result.ErrorMessage);
-    }
-  }
+	private async Task HandleSubmit()
+	{
+		var result = await userService.RegisterAsync(newUser);
+		if (result.IsSuccess)
+		{
+			logger.LogInformation("Registeration Success");
+			authState.Login();
+			navigation.NavigateTo("/");
+		}
+		else
+		{
+			logger.LogInformation(result.ErrorMessage);
+		}
+	}
 }

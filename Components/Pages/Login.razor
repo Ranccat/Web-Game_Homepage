@@ -1,7 +1,10 @@
 @page "/login"
 @rendermode InteractiveServer
+
 @inject UserService userService
 @inject ILogger<Login> logger
+@inject AuthStateProvider authState
+@inject NavigationManager navigation
 
 <PageTitle>Login</PageTitle>
 
@@ -15,6 +18,7 @@
         <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" />
         <ValidationMessage For="@(() => loginUser.UserId)" />
     </div>
+
     <div class="mb-3"> <!-- Password -->
         <label for="inputPassword" class="form-label">Password</label>
         <InputText type="password" class="form-control" id="inputPassword" @bind-Value="loginUser.Password" />
@@ -34,6 +38,8 @@
         if (result.IsSuccess)
         {
             logger.LogInformation("Login Success");
+            authState.Login();
+            navigation.NavigateTo("/");
         }
         else
         {

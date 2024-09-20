@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Services
+builder.Services.AddSingleton<AuthStateProvider>();
 builder.Services.AddScoped<UserService>();
 
 // Loggers
