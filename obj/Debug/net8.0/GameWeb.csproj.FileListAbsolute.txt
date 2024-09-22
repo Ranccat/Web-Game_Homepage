@@ -102,6 +102,5 @@
 /Users/daniel/WebProjects/GameWeb/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/daniel/WebProjects/GameWeb/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/daniel/WebProjects/GameWeb/bin/Debug/net8.0/BCrypt.Net-Next.dll
-/Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/Components/Pages/Temp.razor.rz.scp.css
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/Components/Pages/Login.razor.rz.scp.css
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/Components/Pages/Registration.razor.rz.scp.css

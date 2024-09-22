@@ -37,6 +37,16 @@ main {
     background-color: transparent !important;
 }
 
+.navbar-brand {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 30px;
+}
+
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 0.8);
     transition: color 0.3s ease;

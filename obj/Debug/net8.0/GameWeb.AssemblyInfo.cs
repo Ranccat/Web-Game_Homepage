@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c35067bb9459d0093f860ab4a267df97ce24083c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d02c8a2f1ab5e044c9e024ad53746f185fa71a0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

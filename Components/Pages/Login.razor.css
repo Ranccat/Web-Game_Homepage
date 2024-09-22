@@ -35,8 +35,8 @@
     width: 100%;
     margin-top: 20px;
     /* Semi-transparent light purple */
-    background-color: rgba(186, 85, 211, 0.5);
-    border-color: rgba(186, 85, 211, 0.7);
+    background-color: rgba(97, 98, 169, 0.8);
+    border-color: rgba(97, 98, 169, 0.9);
     
     /* Optional: Add transition for smooth color change on hover */
     transition: background-color 0.3s ease;

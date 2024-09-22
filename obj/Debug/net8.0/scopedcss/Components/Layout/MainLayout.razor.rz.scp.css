@@ -37,6 +37,17 @@ main[b-gwogx84t70] {
     background-color: transparent !important;
 }
 
+.navbar-brand[b-gwogx84t70] {
+    margin-left: 50px;
+    margin-right: 50px;
+    size: 3.0rem;
+}
+
+.navbar-nav[b-gwogx84t70] {
+    display: flex;
+    gap: 30px;
+}
+
 .navbar-dark .navbar-nav .nav-link[b-gwogx84t70] {
     color: rgba(255, 255, 255, 0.8);
     transition: color 0.3s ease;
