@@ -19,7 +19,6 @@
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.GameWeb.props
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/Components/Layout/MainLayout.razor.rz.scp.css
-/Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/Components/Layout/NavMenu.razor.rz.scp.css
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/bundle/GameWeb.styles.css
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/projectbundle/GameWeb.bundle.scp.css
 /Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/GameWeb.dll
@@ -103,3 +102,4 @@
 /Users/daniel/WebProjects/GameWeb/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/daniel/WebProjects/GameWeb/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/daniel/WebProjects/GameWeb/bin/Debug/net8.0/BCrypt.Net-Next.dll
+/Users/daniel/WebProjects/GameWeb/obj/Debug/net8.0/scopedcss/Components/Pages/Temp.razor.rz.scp.css

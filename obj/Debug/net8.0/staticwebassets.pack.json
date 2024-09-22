@@ -21,6 +21,18 @@
       "PackagePath": "staticwebassets/favicon.png"
     },
     {
+      "Id": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/accounts.png",
+      "PackagePath": "staticwebassets/images/accounts.png"
+    },
+    {
+      "Id": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/games.png",
+      "PackagePath": "staticwebassets/images/games.png"
+    },
+    {
+      "Id": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/main.png",
+      "PackagePath": "staticwebassets/images/main.png"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.GameWeb.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

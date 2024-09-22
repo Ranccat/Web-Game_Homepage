@@ -13,6 +13,13 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
+    @if (string.IsNullOrEmpty(errorMessage) == false)
+    {
+        <div class="alert alert-danger" role="alert">
+            @errorMessage
+        </div>
+    }
+
     <div class="mb-3"> <!-- UserID -->
         <label for="inputUserId" class="form-label">User ID</label>
         <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" />
@@ -31,19 +38,20 @@
 
 @code {
     private LoginDto loginUser = new LoginDto();
+    private string? errorMessage = null;
 
     private async Task HandleSubmit()
     {
         var result = await userService.LoginAsync(loginUser);
         if (result.IsSuccess)
         {
-            logger.LogInformation("Login Success");
             authState.Login();
             navigation.NavigateTo("/");
         }
         else
         {
             logger.LogInformation(result.ErrorMessage);
+            errorMessage = result.ErrorMessage;
         }
     }
 }

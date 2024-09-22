@@ -1,10 +1,70 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthStateProvider AuthState;
+
+@code {
+    bool isLoggedIn => AuthState.IsLoggedIn;
+}
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
+    <!-- nav-bar container -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
+            <!-- logo -->
+            <a class="navbar-brand" href="/">Home</a>
+
+            <!-- nav-bar on collapse -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- nav-bar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- main links -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <NavLink class="nav-link main-link" href="about" Match="NavLinkMatch.All">
+                            About
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link main-link" href="games">
+                            Games
+                        </NavLink>
+                    </li>
+                </ul>
+
+                <!-- account links -->
+                <ul class="navbar-nav">
+                    @if (isLoggedIn)
+                    {
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="profile">
+                                Profile
+                            </NavLink>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="login">
+                                Login
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="register">
+                                Registration
+                            </NavLink>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- page -->
     <main>
         <article class="content px-4">
             @Body
@@ -17,3 +77,10 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        // initial code if needed
+    }
+}

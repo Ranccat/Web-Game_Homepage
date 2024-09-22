@@ -22,8 +22,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/daniel/WebProjects/GameWeb/Components/Pages/About.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BYm91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/daniel/WebProjects/GameWeb/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/daniel/WebProjects/GameWeb/Components/Pages/Games.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9HYW1lcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/daniel/WebProjects/GameWeb/Components/Pages/Home.razor]
@@ -36,10 +44,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/daniel/WebProjects/GameWeb/Components/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Qcm9maWxlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/daniel/WebProjects/GameWeb/Components/Pages/ProjectK.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Qcm9qZWN0Sy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/daniel/WebProjects/GameWeb/Components/Pages/Registration.razor]
@@ -58,6 +62,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-gwogx84t70
 
-[/Users/daniel/WebProjects/GameWeb/Components/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-983uh5fza7
+[/Users/daniel/WebProjects/GameWeb/Components/Pages/Temp.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9UZW1wLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-i02oqwwsa5

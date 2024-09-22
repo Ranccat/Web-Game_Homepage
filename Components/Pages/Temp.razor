@@ -1,0 +1,53 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="page @_backgroundClass">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <!-- Navigation bar content remains the same -->
+    </nav>
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+@code {
+    private string _backgroundClass = "default-background";
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += LocationChanged;
+        SetBackgroundClass(NavigationManager.Uri);
+    }
+
+    private void LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        SetBackgroundClass(e.Location);
+        StateHasChanged();
+    }
+
+    private void SetBackgroundClass(string url)
+    {
+        if (url.EndsWith("/login"))
+        {
+            _backgroundClass = "login-background";
+        }
+        else
+        {
+            _backgroundClass = "default-background";
+        }
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= LocationChanged;
+    }
+}
