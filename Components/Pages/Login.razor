@@ -8,33 +8,37 @@
 
 <PageTitle>Login</PageTitle>
 
-<EditForm Model="loginUser" OnValidSubmit="HandleSubmit">
+<div class="login-container">
+    
+    <EditForm Model="loginUser" OnValidSubmit="HandleSubmit">
 
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-    @if (string.IsNullOrEmpty(errorMessage) == false)
-    {
-        <div class="alert alert-danger" role="alert">
-            @errorMessage
+        @if (string.IsNullOrEmpty(errorMessage) == false)
+        {
+            <div class="alert alert-danger" role="alert">
+                @errorMessage
+            </div>
+        }
+
+        <div class="mb-3"> <!-- UserID -->
+            <label for="inputUserId" class="form-label">User ID</label>
+            <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" />
+            <ValidationMessage For="@(() => loginUser.UserId)" class="validation-message" />
         </div>
-    }
 
-    <div class="mb-3"> <!-- UserID -->
-        <label for="inputUserId" class="form-label">User ID</label>
-        <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" />
-        <ValidationMessage For="@(() => loginUser.UserId)" />
-    </div>
+        <div class="mb-3"> <!-- Password -->
+            <label for="inputPassword" class="form-label">Password</label>
+            <InputText type="password" class="form-control" id="inputPassword" @bind-Value="loginUser.Password" />
+            <ValidationMessage For="@(() => loginUser.Password)" class="validation-message" />
+        </div>
+    
+        <button class="btn btn-primary" type="submit">Login</button>
 
-    <div class="mb-3"> <!-- Password -->
-        <label for="inputPassword" class="form-label">Password</label>
-        <InputText type="password" class="form-control" id="inputPassword" @bind-Value="loginUser.Password" />
-        <ValidationMessage For="@(() => loginUser.Password)" />
-    </div>
-  
-    <button class="btn btn-primary" type="submit">Login</button>
+    </EditForm>
+</div>
 
-</EditForm>
 
 @code {
     private LoginDto loginUser = new LoginDto();

@@ -6,40 +6,43 @@
 @inject AuthStateProvider authState
 @inject NavigationManager navigation
 
-<PageTitle>Registration</PageTitle>
+<PageTitle>Sign Up</PageTitle>
 
-<EditForm Model="newUser" OnValidSubmit="HandleSubmit">
+<div class="registration-container">
+	<EditForm Model="newUser" OnValidSubmit="HandleSubmit">
 
-	<DataAnnotationsValidator />
-	<ValidationSummary />
+		<DataAnnotationsValidator />
+		<ValidationSummary />
 
-	<div class="mb-3"> <!-- UserID -->
-		<label for="inputUserId" class="form-label">User ID</label>
-		<InputText class="form-control" id="inputUserId" @bind-Value="newUser.UserId" />
-		<ValidationMessage For="@(() => newUser.UserId)" />
-	</div>
-		
-	<div class="mb-3"> <!-- Password -->
-		<label for="inputPassword" class="form-label">Password</label>
-		<InputText type="password" class="form-control" id="inputPassword" @bind-Value="newUser.Password" />
-		<ValidationMessage For="@(() => newUser.Password)" />
-	</div>
+		<div class="mb-3"> <!-- UserID -->
+			<label for="inputUserId" class="form-label">User ID</label>
+			<InputText class="form-control" id="inputUserId" @bind-Value="newUser.UserId" />
+			<ValidationMessage For="@(() => newUser.UserId)" />
+		</div>
+			
+		<div class="mb-3"> <!-- Password -->
+			<label for="inputPassword" class="form-label">Password</label>
+			<InputText type="password" class="form-control" id="inputPassword" @bind-Value="newUser.Password" />
+			<ValidationMessage For="@(() => newUser.Password)" />
+		</div>
 
-	<div class="mb-3"> <!-- Email -->
-		<label for="inputEmail" class="form-label">Email Address</label>
-		<InputText type="email" class="form-control" id="inputEmail" @bind-Value="newUser.Email" />
-		<ValidationMessage For="@(() => newUser.Email)" />
-	</div>
+		<div class="mb-3"> <!-- Email -->
+			<label for="inputEmail" class="form-label">Email Address</label>
+			<InputText type="email" class="form-control" id="inputEmail" @bind-Value="newUser.Email" />
+			<ValidationMessage For="@(() => newUser.Email)" />
+		</div>
 
-	<div class="mb-3"> <!-- Nickname -->
-		<label for="inputNickname" class="form-label">Nickname</label>
-		<InputText class="form-control" id="inputNickname" @bind-Value="newUser.Nickname" />
-		<ValidationMessage For="@(() => newUser.Nickname)" />
-	</div>
+		<div class="mb-3"> <!-- Nickname -->
+			<label for="inputNickname" class="form-label">Nickname</label>
+			<InputText class="form-control" id="inputNickname" @bind-Value="newUser.Nickname" />
+			<ValidationMessage For="@(() => newUser.Nickname)" />
+		</div>
 
-	<button class="btn btn-primary" type="submit">Submit</button>
+		<button class="btn btn-primary" type="submit">Sign Up</button>
 
-</EditForm>
+	</EditForm>
+</div>
+
 
 @code {
 	private RegisterDto newUser = new RegisterDto();
