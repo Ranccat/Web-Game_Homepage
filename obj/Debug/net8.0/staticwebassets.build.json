@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pVtCAqJbNXvIW/2UrPIDmJtsRo6Y3d8lXNqopEZuJ8g=",
+  "Hash": "hbcqPwYY3Y+Jv2EWHhWGqRtXeSJS0rl0w6L93X9MK6c=",
   "Source": "GameWeb",
   "BasePath": "_content/GameWeb",
   "Mode": "Default",
@@ -131,12 +131,12 @@
       "OriginalItemSpec": "wwwroot/favicon.png"
     },
     {
-      "Identity": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/accounts.png",
+      "Identity": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/account.png",
       "SourceId": "GameWeb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/daniel/WebProjects/GameWeb/wwwroot/",
       "BasePath": "_content/GameWeb",
-      "RelativePath": "images/accounts.png",
+      "RelativePath": "images/account.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,15 +147,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/accounts.png"
+      "OriginalItemSpec": "wwwroot/images/account.png"
     },
     {
-      "Identity": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/games.png",
+      "Identity": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/default-bright.png",
       "SourceId": "GameWeb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/daniel/WebProjects/GameWeb/wwwroot/",
       "BasePath": "_content/GameWeb",
-      "RelativePath": "images/games.png",
+      "RelativePath": "images/default-bright.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -166,15 +166,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/games.png"
+      "OriginalItemSpec": "wwwroot/images/default-bright.png"
     },
     {
-      "Identity": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/main.png",
+      "Identity": "/Users/daniel/WebProjects/GameWeb/wwwroot/images/default.png",
       "SourceId": "GameWeb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/daniel/WebProjects/GameWeb/wwwroot/",
       "BasePath": "_content/GameWeb",
-      "RelativePath": "images/main.png",
+      "RelativePath": "images/default.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -185,7 +185,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/main.png"
+      "OriginalItemSpec": "wwwroot/images/default.png"
     }
   ]
 }

@@ -1,11 +1,9 @@
 ﻿@inherits LayoutComponentBase
+
 @inject AuthStateProvider AuthState;
+@inject NavigationManager Navigation;
 
-@code {
-    bool isLoggedIn => AuthState.IsLoggedIn;
-}
-
-<div class="page">
+<div class="page @backgroundClass">
 
     <!-- nav-bar container -->
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -79,8 +77,40 @@
 </div>
 
 @code {
+    private string backgroundClass = "background-default";
+    bool isLoggedIn => AuthState.IsLoggedIn;
+
     protected override void OnInitialized()
     {
-        // initial code if needed
+        Navigation.LocationChanged += PageRedirected;
+        SetBackgroundImage(Navigation.Uri);
+    }
+
+    private void PageRedirected(object? sender, LocationChangedEventArgs e)
+    {
+        SetBackgroundImage(e.Location);
+        StateHasChanged();
+    }
+
+    private void SetBackgroundImage(string url)
+    {
+        switch (url)
+        {
+            case string u when u.Equals("/"):
+                backgroundClass = "background-default";
+                break;
+            case string u1 when u1.EndsWith("login"):
+            case string u2 when u2.EndsWith("register"):
+                backgroundClass = "background-account";
+                break;
+            default:
+                backgroundClass = "background-default";
+                break;
+        }
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= PageRedirected;
     }
 }

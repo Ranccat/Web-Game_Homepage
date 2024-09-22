@@ -2,12 +2,23 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-image: url('images/main.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
     color: white;
+}
+
+.background-default {
+    background-image: url('images/default.png');
+}
+
+.background-account {
+    background-image: url('images/account.png');
+}
+
+.background-default-bright {
+    background-image: url('images/default-bright.png');
 }
 
 main {

@@ -57,17 +57,23 @@ public class UserService
 
     public async Task<(bool IsSuccess, string ErrorMessage)> LoginAsync(LoginDto loginDto)
     {
+        // check if the user exists
         var userInfo = await _context.Users.FirstOrDefaultAsync(u => u.UserId == loginDto.UserId);
         if (userInfo == null)
         {
             return (false, "The user ID doesn't exists");
         }
 
+        // verify password
         bool passwordVerified = BCrypt.Net.BCrypt.Verify(loginDto.Password, userInfo.Password);
         if (passwordVerified == false)
         {
             return (false, "Incorrect password");
         }
+
+        // update last login datetime
+        userInfo.LastLogin = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
 
         return (true, string.Empty);
     }
