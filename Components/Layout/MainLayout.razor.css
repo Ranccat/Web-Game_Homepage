@@ -58,9 +58,9 @@ main {
     color: rgba(255, 255, 255, 1);
 }
 
-.navbar-dark .navbar-nav .main-link {
-    font-size: 3.0rem;
-    font-weight: bold;
+.nav-link .main-link {
+    font-size: 8.0rem !important;
+    font-weight: bold !important;
 }
 
 #blazor-error-ui {

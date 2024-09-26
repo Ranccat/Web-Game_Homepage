@@ -3,7 +3,7 @@
 
 @inject UserService userService
 @inject ILogger<Registration> logger
-@inject AuthStateProvider authState
+@inject UserSessionService sessionService
 @inject NavigationManager navigation
 
 <PageTitle>Sign Up</PageTitle>
@@ -16,25 +16,25 @@
 
 		<div class="mb-3"> <!-- UserID -->
 			<label for="inputUserId" class="form-label">User ID</label>
-			<InputText class="form-control" id="inputUserId" @bind-Value="newUser.UserId" />
+			<InputText class="form-control" id="inputUserId" @bind-Value="newUser.UserId" placeholder="Enter your new user ID" />
 			<ValidationMessage For="@(() => newUser.UserId)" />
 		</div>
 			
 		<div class="mb-3"> <!-- Password -->
 			<label for="inputPassword" class="form-label">Password</label>
-			<InputText type="password" class="form-control" id="inputPassword" @bind-Value="newUser.Password" />
+			<InputText type="password" class="form-control" id="inputPassword" @bind-Value="newUser.Password" placeholder="Enter your new password" />
 			<ValidationMessage For="@(() => newUser.Password)" />
 		</div>
 
 		<div class="mb-3"> <!-- Email -->
 			<label for="inputEmail" class="form-label">Email Address</label>
-			<InputText type="email" class="form-control" id="inputEmail" @bind-Value="newUser.Email" />
+			<InputText type="email" class="form-control" id="inputEmail" @bind-Value="newUser.Email" placeholder="Enter your email address" />
 			<ValidationMessage For="@(() => newUser.Email)" />
 		</div>
 
 		<div class="mb-3"> <!-- Nickname -->
 			<label for="inputNickname" class="form-label">Nickname</label>
-			<InputText class="form-control" id="inputNickname" @bind-Value="newUser.Nickname" />
+			<InputText class="form-control" id="inputNickname" @bind-Value="newUser.Nickname" placeholder="Enter your new nickname" />
 			<ValidationMessage For="@(() => newUser.Nickname)" />
 		</div>
 
@@ -52,8 +52,7 @@
 		var result = await userService.RegisterAsync(newUser);
 		if (result.IsSuccess)
 		{
-			logger.LogInformation("Registeration Success");
-			authState.Login();
+			sessionService.Login(newUser.UserId, DateTime.UtcNow);
 			navigation.NavigateTo("/");
 		}
 		else

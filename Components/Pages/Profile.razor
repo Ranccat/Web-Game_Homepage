@@ -1,9 +1,26 @@
 @page "/profile"
 
-<h1>Profile</h1>
-<br>
-<h3>Coming Soon...</h3>
+@inject ILogger<Profile> logger
+@inject UserService UserService
+@inject AuthStateProvider AuthState
+
+@if (profile == null)
+{
+    <h3> Something went wrong </h3>
+}
+else
+{
+    <h1> Profile </h1>
+    <br>
+    <h3> your nick name is @profile.Nickname </h3>
+}
 
 @code {
-    // page on work
+    ProfileDto? profile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string userId = AuthState.GetUserId();
+        profile = await UserService.GetProfileAsync(userId);
+    }
 }

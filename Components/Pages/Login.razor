@@ -1,9 +1,11 @@
 @page "/login"
 @rendermode InteractiveServer
 
+@using Microsoft.AspNetCore.Components.Server.Circuits
+
 @inject UserService userService
 @inject ILogger<Login> logger
-@inject AuthStateProvider authState
+@inject UserSessionService sessionService
 @inject NavigationManager navigation
 
 <PageTitle>Login</PageTitle>
@@ -24,13 +26,13 @@
 
         <div class="mb-3"> <!-- UserID -->
             <label for="inputUserId" class="form-label">User ID</label>
-            <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" />
+            <InputText class="form-control" id="inputUserId" @bind-Value="loginUser.UserId" placeholder="Enter your user ID" />
             <ValidationMessage For="@(() => loginUser.UserId)" class="validation-message" />
         </div>
 
         <div class="mb-3"> <!-- Password -->
             <label for="inputPassword" class="form-label">Password</label>
-            <InputText type="password" class="form-control" id="inputPassword" @bind-Value="loginUser.Password" />
+            <InputText type="password" class="form-control" id="inputPassword" @bind-Value="loginUser.Password" placeholder="Enter your password" />
             <ValidationMessage For="@(() => loginUser.Password)" class="validation-message" />
         </div>
     
@@ -49,11 +51,12 @@
         var result = await userService.LoginAsync(loginUser);
         if (result.IsSuccess)
         {
-            authState.Login();
+            sessionService.Login(loginUser.UserId, DateTime.UtcNow);
             navigation.NavigateTo("/");
         }
         else
         {
+    
             logger.LogInformation(result.ErrorMessage);
             errorMessage = result.ErrorMessage;
         }

@@ -1,4 +1,5 @@
 using GameWeb.Components;
+using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,8 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Services
-builder.Services.AddSingleton<AuthStateProvider>();
+builder.Services.AddSingleton<CircuitHandler, UserCircuitHandler>();
+builder.Services.AddSingleton<UserSessionService>();
 builder.Services.AddScoped<UserService>();
 
 // Loggers

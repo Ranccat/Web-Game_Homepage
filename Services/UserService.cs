@@ -55,26 +55,45 @@ public class UserService
         return (true, string.Empty);
     }
 
-    public async Task<(bool IsSuccess, string ErrorMessage)> LoginAsync(LoginDto loginDto)
+    public async Task<(bool IsSuccess, string ErrorMessage, string? UserId)> LoginAsync(LoginDto loginDto)
     {
         // check if the user exists
         var userInfo = await _context.Users.FirstOrDefaultAsync(u => u.UserId == loginDto.UserId);
         if (userInfo == null)
         {
-            return (false, "The user ID doesn't exists");
+            return (false, "The user ID doesn't exists", null);
         }
 
         // verify password
         bool passwordVerified = BCrypt.Net.BCrypt.Verify(loginDto.Password, userInfo.Password);
         if (passwordVerified == false)
         {
-            return (false, "Incorrect password");
+            return (false, "Incorrect password", null);
         }
 
         // update last login datetime
         userInfo.LastLogin = DateTime.UtcNow;
         await _context.SaveChangesAsync();
 
-        return (true, string.Empty);
+        return (true, string.Empty, userInfo.UserId);
+    }
+
+    public async Task<ProfileDto?> GetProfileAsync(string userId)
+    {
+        // find user
+        var userInfo = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+        if (userInfo == null)
+        {
+            return null;
+        }
+
+        ProfileDto profile = new ProfileDto
+        {
+            Nickname = userInfo.Nickname,
+            Bio = userInfo.Bio,
+            ProfileImageUrl = userInfo.ProfileImageUrl
+        };
+
+        return profile;
     }
 }
